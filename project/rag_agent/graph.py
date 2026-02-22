@@ -23,7 +23,7 @@ def create_agent_graph(llm, tools_list):
     agent_builder.add_node(collect_answer)
     
     agent_builder.add_edge(START, "orchestrator")    
-    agent_builder.add_conditional_edges("orchestrator", route_after_agent_call, {"tools": "tools", "fallback_response": "fallback_response", "collect_answer": "collect_answer"})
+    agent_builder.add_conditional_edges("orchestrator", route_after_orchestrator_call, {"tools": "tools", "fallback_response": "fallback_response", "collect_answer": "collect_answer"})
     agent_builder.add_edge("tools", "should_compress_context")
     agent_builder.add_edge("compress_context", "orchestrator")
     agent_builder.add_edge("fallback_response", "collect_answer")

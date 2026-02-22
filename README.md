@@ -26,12 +26,12 @@
   <img src="https://img.shields.io/badge/python-3.10%2B-blue?logo=python&logoColor=white" alt="Python"/>
   <img src="https://img.shields.io/badge/LangGraph-1.0%2B-orange?logo=langchain&logoColor=white" alt="LangGraph"/>
   <img src="https://img.shields.io/badge/Qdrant-vector%20db-DC244C" alt="Qdrant"/>
-  <img src="https://img.shields.io/badge/LLM%20Providers-Ollama%20%7C%20OpenAI%20%7C%20Claude%20%7C%20Gemini-purple" alt="LLM Providers"/>
+  <img src="https://img.shields.io/badge/LLM%20Providers-Ollama%20%7C%20OpenAI%20%7C%20Anthropic%20%7C%20Google-purple" alt="LLM Providers"/>
   <img src="https://img.shields.io/badge/license-MIT-green" alt="License"/>
 </p>
 
 <p align="center">
-  <a href="https://colab.research.google.com/gist/GiovanniPasq/8ea817a10cb3459a37acbba5a18a873e/agentic_rag_for_dummies.ipynb">
+  <a href="https://colab.research.google.com/gist/GiovanniPasq/a74f077444ba21fc917dd8828bd92f23/agentic_rag_for_dummies.ipynb">
     <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
   </a>
 </p>
@@ -52,7 +52,7 @@ This repository demonstrates how to build an **Agentic RAG (Retrieval-Augmented 
 
 | Feature | Description |
 |---|---|
-| 💬 **Conversation Memory** | Maintains context across multiple questions for natural dialogue |
+| 💬 **Conversation Memory** | Maintains context across questions for natural dialogue |
 | 🔍 **Hierarchical Indexing** | Search small chunks for precision, retrieve large Parent chunks for context |
 | 🔄 **Query Clarification** | Rewrites ambiguous queries or pauses to ask the user for details |
 | 🤖 **Agent Orchestration** | LangGraph coordinates the full retrieval and reasoning workflow |
@@ -63,10 +63,12 @@ This repository demonstrates how to build an **Agentic RAG (Retrieval-Augmented 
 ### 🎯 Two Ways to Use This Repo
 
 **1️⃣ Learning Path: Interactive Notebook**
+
 Step-by-step tutorial perfect for understanding core concepts. Start here if you're new to Agentic RAG or want to experiment quickly.
 
 **2️⃣ Building Path: Modular Project**
-Production-ready architecture where each component can be independently swapped — LLM provider, embedding model, PDF converter, agent workflow. One line to switch from Ollama to Claude, OpenAI, or Gemini.
+
+Flexible architecture where each component can be independently swapped — LLM provider, embedding model, PDF converter, agent workflow. One line to switch from Ollama to Anthropic, OpenAI, or Google.
 
 See [Modular Architecture](#modular-architecture) and [Installation & Usage](#installation--usage) to get started.
 
@@ -89,7 +91,7 @@ User Query → Conversation Summary → Query Rewriting → Query Clarification 
 Parallel Agent Reasoning → Aggregation → Final Response
 ```
 
-**Stage 1 — Conversation Understanding:** Analyzes recent history to extract context and maintain continuity across multiple questions.
+**Stage 1 — Conversation Understanding:** Analyzes recent history to extract context and maintain continuity across questions.
 
 **Stage 2 — Query Clarification:** Resolves references ("How do I update it?" → "How do I update SQL?"), splits multi-part questions into focused sub-queries, detects unclear inputs, and rewrites queries for optimal retrieval. Pauses for human input when clarification is needed.
 
@@ -103,11 +105,11 @@ Parallel Agent Reasoning → Aggregation → Final Response
 
 ## LLM Provider Configuration
 
-This system is **provider-agnostic** — it supports any LLM available in [LangChain](https://python.langchain.com/docs/integrations/chat/), and you can swap providers in a single line. The examples below cover the most common options, but the same pattern applies to any other supported provider.
+This system is provider-agnostic — it supports any LLM provider available in [LangChain](https://python.langchain.com/docs/integrations/chat/), swappable in a single line. The examples below cover the most common options, but the same pattern applies to any other supported provider.
 
 > **Note:** Model names change frequently. Always check the official documentation for the latest available models and their identifiers before deploying.
 
-### Ollama (Local, Free)
+### Ollama (Local)
 
 ```bash
 # Install Ollama from https://ollama.com
@@ -128,7 +130,7 @@ llm = ChatOllama(model="qwen3:4b-instruct-2507-q4_K_M", temperature=0)
 <details>
 <summary>Click to expand</summary>
 
-**OpenAI:**
+**OpenAI GPT:**
 ```bash
 pip install -qU langchain-openai
 ```
@@ -160,7 +162,6 @@ pip install -qU langchain-google-genai
 import os
 from langchain_google_genai import ChatGoogleGenerativeAI
 
-# Set your Google API key
 os.environ["GOOGLE_API_KEY"] = "your-api-key-here"
 llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0)
 ```
@@ -170,7 +171,7 @@ llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0)
 
 ## Implementation
 
-Additional details and extended explanations are available in the **[notebook](Agentic_Rag_For_Dummies.ipynb)**
+Additional details and extended explanations are available in the **[notebook](Agentic_Rag_For_Dummies.ipynb)**.
 | Step | Description |
 |------|-------------|
 | 1 | [Initial Setup and Configuration](#step-1-initial-setup-and-configuration) |
@@ -182,7 +183,7 @@ Additional details and extended explanations are available in the **[notebook](A
 | 7 | [Define State and Data Models](#step-7-define-state-and-data-models) |
 | 8 | [Agent Configuration](#step-8-agent-configuration) |
 | 9 | [Build Graph Node and Edge Functions](#step-9-build-graph-node-and-edge-functions) |
-| 10 | [Build the LangGraph Agent](#step-10-build-the-langgraph-agent) |
+| 10 | [Build the LangGraph Graphs](#step-10-build-the-langgraph-graphs) |
 | 11 | [Create Chat Interface](#step-11-create-chat-interface) |
 
 ### Step 1: Initial Setup and Configuration
@@ -245,7 +246,7 @@ def ensure_collection(collection_name):
 
 ### Step 3: PDFs to Markdown
 
-Convert the PDFs to Markdown. For more details about other techniques use this companion [notebook](pdf_to_md.ipynb)
+Convert the PDFs to Markdown. For more details about other techniques use this companion [notebook](pdf_to_md.ipynb).
 
 ```python
 import os
@@ -808,13 +809,12 @@ from langchain_core.messages import HumanMessage, AIMessage, SystemMessage, Remo
 from typing import Literal
 
 def summarize_history(state: State):
-    if len(state["messages"]) < 4:  # Need some history to summarize
+    if len(state["messages"]) < 4:
         return {"conversation_summary": ""}
 
     relevant_msgs = [
-        msg for msg in state["messages"][:-1]  # Exclude current query
-        if isinstance(msg, (HumanMessage, AIMessage))
-        and not getattr(msg, "tool_calls", None)
+        msg for msg in state["messages"][:-1]
+        if isinstance(msg, (HumanMessage, AIMessage)) and not getattr(msg, "tool_calls", None)
     ]
 
     if not relevant_msgs:
@@ -825,7 +825,7 @@ def summarize_history(state: State):
         role = "User" if isinstance(msg, HumanMessage) else "Assistant"
         conversation += f"{role}: {msg.content}\n"
 
-    summary_response = llm.with_config(temperature=0.2).invoke([SystemMessage(content=get_conversation_summary_prompt())] + [HumanMessage(content=conversation)])
+    summary_response = llm.with_config(temperature=0.2).invoke([SystemMessage(content=get_conversation_summary_prompt()), HumanMessage(content=conversation)])
     return {"conversation_summary": summary_response.content, "agent_answers": [{"__reset__": True}]}
 
 def rewrite_query(state: State):
@@ -835,18 +835,14 @@ def rewrite_query(state: State):
     context_section = (f"Conversation Context:\n{conversation_summary}\n" if conversation_summary.strip() else "") + f"User Query:\n{last_message.content}\n"
 
     llm_with_structure = llm.with_config(temperature=0.1).with_structured_output(QueryAnalysis)
-    response = llm_with_structure.invoke([SystemMessage(content=get_rewrite_query_prompt())] + [HumanMessage(content=context_section)])
+    response = llm_with_structure.invoke([SystemMessage(content=get_rewrite_query_prompt()), HumanMessage(content=context_section)])
 
-    if len(response.questions) > 0 and response.is_clear:
-        delete_all = [
-            RemoveMessage(id=m.id)
-            for m in state["messages"]
-            if not isinstance(m, SystemMessage)
-        ]
+    if response.questions and response.is_clear:
+        delete_all = [RemoveMessage(id=m.id) for m in state["messages"] if not isinstance(m, SystemMessage)]
         return {"questionIsClear": True, "messages": delete_all, "originalQuery": last_message.content, "rewrittenQuestions": response.questions}
-    else:
-        clarification = response.clarification_needed if (response.clarification_needed and len(response.clarification_needed.strip()) > 10) else "I need more information to understand your question."
-        return {"questionIsClear": False, "messages": [AIMessage(content=clarification)]}
+
+    clarification = response.clarification_needed if response.clarification_needed and len(response.clarification_needed.strip()) > 10 else "I need more information to understand your question."
+    return {"questionIsClear": False, "messages": [AIMessage(content=clarification)]}
 
 def request_clarification(state: State):
     return {}
@@ -871,8 +867,7 @@ def aggregate_answers(state: State):
         formatted_answers += (f"\nAnswer {i}:\n"f"{ans['answer']}\n")
 
     user_message = HumanMessage(content=f"""Original user question: {state["originalQuery"]}\nRetrieved answers:{formatted_answers}""")
-    synthesis_response = llm.invoke([SystemMessage(content=get_aggregation_prompt())] + [user_message])
-
+    synthesis_response = llm.invoke([SystemMessage(content=get_aggregation_prompt()), user_message])
     return {"messages": [AIMessage(content=synthesis_response.content)]}
 ```
 
@@ -889,15 +884,15 @@ def orchestrator(state: AgentState):
     )
     if not state.get("messages"):
         human_msg = HumanMessage(content=state["question"])
-        response = llm_with_tools.invoke([sys_msg] + summary_injection + [human_msg] + [HumanMessage(content="YOU MUST CALL 'search_child_chunks' AS THE FIRST STEP TO ANSWER THIS QUESTION.")])
-        tool_calls = response.tool_calls or []
-        return {"messages": [human_msg, response], "tool_call_count": len(tool_calls), "iteration_count": 1}
+        force_search = HumanMessage(content="YOU MUST CALL 'search_child_chunks' AS THE FIRST STEP TO ANSWER THIS QUESTION.")
+        response = llm_with_tools.invoke([sys_msg] + summary_injection + [human_msg, force_search])
+        return {"messages": [human_msg, response], "tool_call_count": len(response.tool_calls or []), "iteration_count": 1}
 
     response = llm_with_tools.invoke([sys_msg] + summary_injection + state["messages"])
     tool_calls = response.tool_calls if hasattr(response, "tool_calls") else []
     return {"messages": [response], "tool_call_count": len(tool_calls) if tool_calls else 0, "iteration_count": 1}
 
-def route_after_agent_call(state: AgentState) -> Literal["tool", "fallback_response", "collect_answer"]:
+def route_after_orchestrator_call(state: AgentState) -> Literal["tool", "fallback_response", "collect_answer"]:
     iteration = state.get("iteration_count", 0)
     tool_count = state.get("tool_call_count", 0)
 
@@ -913,12 +908,10 @@ def route_after_agent_call(state: AgentState) -> Literal["tool", "fallback_respo
     return "tools"
 
 def fallback_response(state: AgentState):
-    tool_messages = [m for m in state["messages"] if isinstance(m, ToolMessage)]
-
-    unique_contents = []
     seen = set()
-    for m in tool_messages:
-        if m.content not in seen:
+    unique_contents = []
+    for m in state["messages"]:
+        if isinstance(m, ToolMessage) and m.content not in seen:
             unique_contents.append(m.content)
             seen.add(m.content)
 
@@ -927,29 +920,20 @@ def fallback_response(state: AgentState):
     context_parts = []
     if context_summary:
         context_parts.append(f"## Compressed Research Context (from prior iterations)\n\n{context_summary}")
-
     if unique_contents:
-        tool_block = "## Retrieved Data (current iteration)\n\n"
-        tool_block += "\n\n".join(
-            f"--- DATA SOURCE {i} ---\n{content}"
-            for i, content in enumerate(unique_contents, 1)
+        context_parts.append(
+            "## Retrieved Data (current iteration)\n\n" +
+            "\n\n".join(f"--- DATA SOURCE {i} ---\n{content}" for i, content in enumerate(unique_contents, 1))
         )
-        context_parts.append(tool_block)
 
-    context_text = (
-        "\n\n".join(context_parts)
-        if context_parts
-        else "No data was retrieved from the documents."
-    )
+    context_text = "\n\n".join(context_parts) if context_parts else "No data was retrieved from the documents."
 
-    sys_msg = SystemMessage(content=get_fallback_response_prompt())
     prompt_content = (
         f"USER QUERY: {state.get('question')}\n\n"
         f"{context_text}\n\n"
-        f"INSTRUCTION:\n"
-        f"Provide the best possible answer using only the data above."
+        f"INSTRUCTION:\nProvide the best possible answer using only the data above."
     )
-    response = llm.invoke([sys_msg, HumanMessage(content=prompt_content)])
+    response = llm.invoke([SystemMessage(content=get_fallback_response_prompt()), HumanMessage(content=prompt_content)])
     return {"messages": [response]}
 
 def should_compress_context(state: AgentState) -> Command[Literal["compress_context", "orchestrator"]]:
@@ -972,19 +956,16 @@ def should_compress_context(state: AgentState) -> Command[Literal["compress_cont
                         new_ids.add(f"search::{query}")
             break
 
-    existing_ids: Set[str] = state.get("retrieval_keys", set())
-    updated_ids = existing_ids | new_ids
+    updated_ids = state.get("retrieval_keys", set()) | new_ids
 
-    current_token_messages= estimate_context_tokens(messages)
+    current_token_messages = estimate_context_tokens(messages)
     current_token_summary = estimate_context_tokens([HumanMessage(content=state.get("context_summary", ""))])
     current_tokens = current_token_messages + current_token_summary
 
-    MAX_ALLOWED_THRESHOLD = BASE_TOKEN_THRESHOLD + int(current_token_summary * TOKEN_GROWTH_FACTOR)
+    max_allowed = BASE_TOKEN_THRESHOLD + int(current_token_summary * TOKEN_GROWTH_FACTOR)
 
-    if current_tokens > MAX_ALLOWED_THRESHOLD:
-        return Command(update={"retrieval_keys": updated_ids}, goto="compress_context")
-
-    return Command(update={"retrieval_keys": updated_ids}, goto="orchestrator")
+    goto = "compress_context" if current_tokens > max_allowed else "orchestrator"
+    return Command(update={"retrieval_keys": updated_ids}, goto=goto)
 
 def compress_context(state: AgentState):
     messages = state["messages"]
@@ -993,13 +974,7 @@ def compress_context(state: AgentState):
     if not messages:
         return {}
 
-    conversation_text = f"""
-    USER QUESTION:
-    {state.get("question")}
-
-    Conversation to compress:
-
-    """
+    conversation_text = f"USER QUESTION:\n{state.get('question')}\n\nConversation to compress:\n\n"
     if existing_summary:
         conversation_text += f"[PRIOR COMPRESSED CONTEXT]\n{existing_summary}\n\n"
 
@@ -1011,7 +986,7 @@ def compress_context(state: AgentState):
                 tool_calls_info = f" | Tool calls: {calls}"
             conversation_text += f"[ASSISTANT{tool_calls_info}]\n{msg.content or '(tool call only)'}\n\n"
         elif isinstance(msg, ToolMessage):
-            tool_name = msg.name if hasattr(msg, "name") else "tool"
+            tool_name = getattr(msg, "name", "tool")
             conversation_text += f"[TOOL RESULT — {tool_name}]\n{msg.content}\n\n"
 
     summary_response = llm.invoke([SystemMessage(content=get_context_compression_prompt()), HumanMessage(content=conversation_text)])
@@ -1029,30 +1004,15 @@ def compress_context(state: AgentState):
             block += "Search queries already run:\n" + "\n".join(f"- {q}" for q in search_queries) + "\n"
         new_summary += block
 
-    messages_to_remove = [RemoveMessage(id=m.id) for m in messages[1:]]
-
-    return {"context_summary": new_summary, "messages": messages_to_remove}
+    return {"context_summary": new_summary, "messages": [RemoveMessage(id=m.id) for m in messages[1:]]}
 
 def collect_answer(state: AgentState):
     last_message = state["messages"][-1]
-    
-    if isinstance(last_message, AIMessage) and last_message.content and not last_message.tool_calls:
-        return {
-            "final_answer": last_message.content,
-            "agent_answers": [{
-                "index": state["question_index"],
-                "question": state["question"],
-                "answer": last_message.content
-            }]
-        }
-    
+    is_valid = isinstance(last_message, AIMessage) and last_message.content and not last_message.tool_calls
+    answer = last_message.content if is_valid else "Unable to generate an answer."
     return {
-        "final_answer": "Unable to generate an answer.",
-        "agent_answers": [{
-            "index": state["question_index"],
-            "question": state["question"],
-            "answer": "Unable to generate an answer."
-        }]
+        "final_answer": answer,
+        "agent_answers": [{"index": state["question_index"], "question": state["question"], "answer": answer}]
     }
 ```
 
@@ -1067,7 +1027,7 @@ def collect_answer(state: AgentState):
 
 ---
 
-### Step 10: Build the LangGraph Agent
+### Step 10: Build the LangGraph Graphs
 
 Assemble the complete workflow graph with conversation memory and multi-agent architecture.
 
@@ -1087,7 +1047,7 @@ agent_builder.add_node(should_compress_context)
 agent_builder.add_node(collect_answer)
 
 agent_builder.add_edge(START, "orchestrator")
-agent_builder.add_conditional_edges("orchestrator", route_after_agent_call, {"tools": "tools", "fallback_response": "fallback_response", "collect_answer": "collect_answer"})
+agent_builder.add_conditional_edges("orchestrator", route_after_orchestrator_call, {"tools": "tools", "fallback_response": "fallback_response", "collect_answer": "collect_answer"})
 agent_builder.add_edge("tools", "should_compress_context")
 agent_builder.add_edge("compress_context", "orchestrator")
 agent_builder.add_edge("fallback_response", "collect_answer")
@@ -1113,7 +1073,7 @@ agent_graph = graph_builder.compile(checkpointer=checkpointer, interrupt_before=
 
 **Graph architecture explained:**
 
-The architecture flow diagram can be viewed [here](./assets/agentic_rag_workflow.png)
+The architecture flow diagram can be viewed **[here](./assets/agentic_rag_workflow.png)**.
 
 **Agent Subgraph** (processes individual questions):
 - START → `orchestrator` (invoke LLM with tools)
@@ -1125,18 +1085,18 @@ The architecture flow diagram can be viewed [here](./assets/agentic_rag_workflow
 - `collect_answer` → END (clean final answer with index)
 
 **Main Graph** (orchestrates complete workflow):
-1. START → `summarize_history` (extract conversation context from history)
-2. `summarize_history` → `rewrite_query` (rewrite query with context, check clarity)
-3. `rewrite_query` → `request_clarification` (if unclear) OR spawn parallel `agent` subgraphs via `Send` (if clear)
-4. `request_clarification` → `rewrite_query` (after user provides clarification)
-5. All `agent` subgraphs → `aggregate_answers` (merge all responses)
-6. `aggregate_answers` → END (return final synthesized answer)
+- START → `summarize_history` (extract conversation context from history)
+- `summarize_history` → `rewrite_query` (rewrite query with context, check clarity)
+- `rewrite_query` → `request_clarification` (if unclear) OR spawn parallel `agent` subgraphs via `Send` (if clear)
+- `request_clarification` → `rewrite_query` (after user provides clarification)
+- All `agent` subgraphs → `aggregate_answers` (merge all responses)
+- `aggregate_answers` → END (return final synthesized answer)
 
 ---
 
 ### Step 11: Create Chat Interface
 
-Build a Gradio interface with conversation persistence and human-in-the-loop support. For a complete end-to-end pipeline Gradio interface, including document ingestion, please refer to [project/README.md](./project/README.md)
+Build a Gradio interface with conversation persistence and human-in-the-loop support. For a complete end-to-end pipeline Gradio interface, including document ingestion, please refer to [project/README.md](./project/README.md).
 
 ```python
 import gradio as gr
@@ -1144,7 +1104,7 @@ import uuid
 
 def create_thread_id():
     """Generate a unique thread ID for each conversation"""
-    return {"configurable": {"thread_id": str(uuid.uuid4())}}
+    return {"configurable": {"thread_id": str(uuid.uuid4())}, "recursion_limit": 50}
 
 def clear_session():
     """Clear thread for new conversation"""
@@ -1194,54 +1154,39 @@ project/
 
 Key customization points: LLM provider, embedding model, chunking strategy, agent workflow, and system prompts — all configurable via `config.py` or their respective modules.
 
-Full documentation in [project/README.md](./project/README.md)
+Full documentation in [project/README.md](./project/README.md).
 
 ## Installation & Usage
 
-Sample pdf files can be found here: [javascript](https://www.tutorialspoint.com/javascript/javascript_tutorial.pdf), [blockchain](https://blockchain-observatory.ec.europa.eu/document/download/1063effa-59cc-4df4-aeee-d2cf94f69178_en?filename=Blockchain_For_Beginners_A_EUBOF_Guide.pdf), [microservices](https://cdn.studio.f5.com/files/k6fem79d/production/5e4126e1cefa813ab67f9c0b6d73984c27ab1502.pdf), [fortinet](https://www.commoncriteriaportal.org/files/epfiles/Fortinet%20FortiGate_EAL4_ST_V1.5.pdf(320893)_TMP.pdf)  
+Sample pdf files can be found here: [javascript](https://www.tutorialspoint.com/javascript/javascript_tutorial.pdf), [blockchain](https://blockchain-observatory.ec.europa.eu/document/download/1063effa-59cc-4df4-aeee-d2cf94f69178_en?filename=Blockchain_For_Beginners_A_EUBOF_Guide.pdf), [microservices](https://cdn.studio.f5.com/files/k6fem79d/production/5e4126e1cefa813ab67f9c0b6d73984c27ab1502.pdf), [fortinet](https://www.commoncriteriaportal.org/files/epfiles/Fortinet%20FortiGate_EAL4_ST_V1.5.pdf(320893)_TMP.pdf).
 
 ### Option 1: Quickstart Notebook (Recommended for Testing)
 
-The easiest way to get started:
+**Google Colab:** Click the **Open in Colab** badge at the top of this README, upload your PDFs to a `docs/` folder in the file browser, install dependencies with `pip install -r requirements.txt`, then run all cells top to bottom.
 
-**Running in Google Colab:**
-1. Click the **Open in Colab** badge at the top of this README
-2. Create a `docs/` folder in the file browser
-3. Upload your pdf files to the `docs/` folder
-4. Run all cells from top to bottom
-5. The chat interface will appear at the end
+**Local (Jupyter/VSCode):** Optionally create and activate a virtual environment, install dependencies with `pip install -r requirements.txt`, add your PDFs to `docs/`, then run all cells top to bottom.
 
-**Running Locally (Jupyter/VSCode):**
-1. Install dependencies first `pip install -r requirements.txt`
-2. Open the notebook in your preferred environment
-3. Add your pdf files to the `docs/` folder
-4. Run all cells from top to bottom
-5. The chat interface will appear at the end
+The chat interface will appear at the end.
 
 ### Option 2: Full Python Project (Recommended for Development)
 
 #### 1. Install Dependencies
-
 ```bash
 # Clone the repository
-git clone <repo-url>
+git clone https://github.com/GiovanniPasq/agentic-rag-for-dummies
 cd agentic-rag-for-dummies
 
-# Create virtual environment (recommended)
-python -m venv venv
-
-# Activate it
+# Optional: create and activate a virtual environment
 # On macOS/Linux:
-source venv/bin/activate
+python -m venv venv && source venv/bin/activate
 # On Windows:
-.\venv\Scripts\activate
+python -m venv venv && .\venv\Scripts\activate
 
 # Install packages
 pip install -r requirements.txt
 ```
 
 #### 2. Run the Application
-
 ```bash
 python app.py
 ```
@@ -1290,3 +1235,5 @@ Agent: [Retrieves and answers with specific information]
 | **Agent Configuration** | - Agent gives up too early <br>- Agent loops too long| - Increase `MAX_TOOL_CALLS` / `MAX_ITERATIONS` for complex queries<br>- Decrease them to speed up simple queries |
 | **Temperature & Consistency** | - Responses inconsistent or overly creative<br>- Responses too rigid or repetitive | - Set temperature to `0` for factual, consistent output<br>- Slightly increase temperature for summarization or analysis tasks |
 | **Embedding Model Quality** | - Poor semantic search<br>- Weak performance on domain-specific or multilingual docs | - Use higher-quality or domain-specific embeddings<br>- Re-index all documents after changing embeddings |
+
+> 💡 **For additional troubleshooting tips** see the [README Troubleshooting](./project/README.md#troubleshooting).
