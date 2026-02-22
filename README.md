@@ -5,7 +5,7 @@
 <h1 align="center">Agentic RAG for Dummies</h1>
 
 <p align="center">
-  <strong>Build a production-ready Agentic RAG system with LangGraph, conversation memory, and human-in-the-loop query clarification</strong>
+  <strong>Build a modular Agentic RAG system with LangGraph, conversation memory, and human-in-the-loop query clarification</strong>
 </p>
 
 <p align="center">
@@ -46,14 +46,14 @@
 
 ## Overview
 
-This repository demonstrates how to build an **Agentic RAG (Retrieval-Augmented Generation)** system using LangGraph with minimal code. Most RAG tutorials show basic concepts but lack production readiness — this repo bridges that gap by providing **both learning materials and deployable code**.
+This repository demonstrates how to build an **Agentic RAG (Retrieval-Augmented Generation)** system using LangGraph with minimal code. Most RAG tutorials show basic concepts but lack guidance on building modular, agent-driven systems — this project bridges that gap by providing **both learning materials and an extensible architecture**.
 
 ### What's inside
 
 | Feature | Description |
 |---|---|
-| 💬 **Conversation Memory** | Maintains context across questions for natural dialogue |
 | 🔍 **Hierarchical Indexing** | Search small chunks for precision, retrieve large Parent chunks for context |
+| 💬 **Conversation Memory** | Maintains context across questions for natural dialogue |
 | 🔄 **Query Clarification** | Rewrites ambiguous queries or pauses to ask the user for details |
 | 🤖 **Agent Orchestration** | LangGraph coordinates the full retrieval and reasoning workflow |
 | 🔀 **Multi-Agent Map-Reduce** | Decomposes complex queries into parallel sub-queries |
@@ -505,7 +505,7 @@ llm_with_tools = llm.bind_tools([search_child_chunks, retrieve_parent_chunks])
 
 ### Step 6: Define System Prompts
 
-Define the system prompts for conversation summarization, query rewriting, RAG agent reasoning, context compression, fallback response, and answer aggregation.
+Define the system prompts for conversation summarization, query rewriting, agent orchestration, context compression, fallback response, and answer aggregation.
 
 <details>
 <summary>Conversation Summary Prompt</summary>
@@ -1023,8 +1023,7 @@ def collect_answer(state: AgentState):
 - **Parallel execution** via `Send` API spawns independent agent subgraphs for each sub-question simultaneously
 - **Context compression** keeps the agent's working memory lean across long retrieval loops, preventing redundant fetches
 - **Fallback response** ensures graceful degradation — the agent always returns something useful even when the budget runs out
-- **Answer collection & aggregation** extracts clean final answers from tool-calling conversations and merges them into a single coherent response
-
+- **Answer collection & aggregation** extracts clean final answers from agents and aggregates them into a single coherent response
 ---
 
 ### Step 10: Build the LangGraph Graphs
@@ -1139,7 +1138,7 @@ demo.launch(theme=gr.themes.Citrus())
 
 ## Modular Architecture
 
-The app (`project/` folder) is organized into modular components — each independently swappable without breaking the system:
+The app (`project/` folder) is organized into modular components — each independently swappable without breaking the system.
 
 ### 📂 Project Structure
 ```
@@ -1199,7 +1198,7 @@ Open the local URL (e.g., `http://127.0.0.1:7860`) to start chatting.
 
 ### Option 3: Docker Deployment
 
-See [`project/README.md`](./project/README.md) for full Docker instructions and system requirements.
+See [`project/README.md`](./project/README.md#Docker-Deployment) for full Docker instructions and system requirements.
 
 ### Example Conversations
 
