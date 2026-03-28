@@ -27,7 +27,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/python-3.10%2B-blue?logo=python&logoColor=white" alt="Python"/>
+  <img src="https://img.shields.io/badge/python-3.11%2B-blue?logo=python&logoColor=white" alt="Python"/>
   <img src="https://img.shields.io/badge/LangGraph-1.0%2B-orange?logo=langchain&logoColor=white" alt="LangGraph"/>
   <img src="https://img.shields.io/badge/Qdrant-vector%20db-DC244C" alt="Qdrant"/>
   <img src="https://img.shields.io/badge/LLM%20Providers-Ollama%20%7C%20OpenAI%20%7C%20Anthropic%20%7C%20Google-purple" alt="LLM Providers"/>
@@ -45,7 +45,6 @@
 
 <p align="center">
   <strong>If you like this project, a star ⭐️ would mean a lot :)</strong><br>
-  <em>⚡️ Streaming responses and agent thinking visibility coming end of month.</em>
 </p>
 
 ## Overview
@@ -56,14 +55,14 @@ This repository demonstrates how to build an **Agentic RAG (Retrieval-Augmented 
 
 | Feature | Description |
 |---|---|
-| 🔍 **Hierarchical Indexing** | Search small chunks for precision, retrieve large Parent chunks for context |
-| 💬 **Conversation Memory** | Maintains context across questions for natural dialogue |
-| 🔄 **Query Clarification** | Rewrites ambiguous queries or pauses to ask the user for details |
+| 🗂️ **Hierarchical Indexing** | Search small chunks for precision, retrieve large Parent chunks for context |
+| 🧠 **Conversation Memory** | Maintains context across questions for natural dialogue |
+| ❓ **Query Clarification** | Rewrites ambiguous queries or pauses to ask the user for details |
 | 🤖 **Agent Orchestration** | LangGraph coordinates the full retrieval and reasoning workflow |
 | 🔀 **Multi-Agent Map-Reduce** | Decomposes complex queries into parallel sub-queries |
 | ✅ **Self-Correction** | Re-queries automatically if initial results are insufficient |
-| 🧠 **Context Compression** | Keeps working memory lean across long retrieval loops |
-| 📊 **Observability** | Track LLM calls, tool usage, and graph execution with Langfuse |
+| 🗜️ **Context Compression** | Keeps working memory lean across long retrieval loops |
+| 🔍 **Observability** | Track LLM calls, tool usage, and graph execution with Langfuse |
 
 ### 🎯 Two Ways to Use This Repo
 
@@ -178,7 +177,8 @@ llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0)
 
 ## Implementation
 
-Additional details and extended explanations are available in the **[notebook](Agentic_Rag_For_Dummies.ipynb)**.
+Additional details, extended explanations, and Langfuse observability (LLM call tracing, tool usage, and graph execution tracking) are available in the **[notebook](Agentic_Rag_For_Dummies.ipynb)** and in the full project.
+
 | Step | Description |
 |------|-------------|
 | 1 | [Initial Setup and Configuration](#step-1-initial-setup-and-configuration) |
@@ -1103,6 +1103,8 @@ The architecture flow diagram can be viewed **[here](./assets/agentic_rag_workfl
 ### Step 11: Create Chat Interface
 
 Build a Gradio interface with conversation persistence and human-in-the-loop support. For a complete end-to-end pipeline Gradio interface, including document ingestion, please refer to [project/README.md](./project/README.md).
+
+> **Note:** Full streaming support — including reasoning steps and tool calls visibility — is implemented in the [notebook](Agentic_Rag_For_Dummies.ipynb) and in the full [project](project/core/chat_interface.py). The example below is intentionally minimal — it shows the basic Gradio integration pattern only.
 
 ```python
 import gradio as gr

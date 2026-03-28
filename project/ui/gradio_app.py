@@ -2,6 +2,9 @@ import gradio as gr
 from core.chat_interface import ChatInterface
 from core.document_manager import DocumentManager
 from core.rag_system import RAGSystem
+import os
+
+ASSETS_DIR = os.path.join(os.path.dirname(__file__), "..", "assets")
 
 def create_gradio_ui():
     rag_system = RAGSystem()
@@ -34,7 +37,8 @@ def create_gradio_ui():
         return format_file_list()
     
     def chat_handler(msg, hist):
-        return chat_interface.chat(msg, hist)
+        for chunk in chat_interface.chat(msg, hist):
+            yield chunk
     
     def clear_chat_handler():
         chat_interface.clear_session()
@@ -69,20 +73,17 @@ def create_gradio_ui():
                 refresh_btn = gr.Button("Refresh", size="md")
                 clear_btn = gr.Button("Clear All", variant="stop", size="md")
             
-            add_btn.click(
-                upload_handler, 
-                [files_input], 
-                [files_input, file_list], 
-                show_progress="corner"
-            )
+            add_btn.click(upload_handler, [files_input], [files_input, file_list], show_progress="corner")
             refresh_btn.click(format_file_list, None, file_list)
             clear_btn.click(clear_handler, None, file_list)
         
         with gr.Tab("Chat"):
             chatbot = gr.Chatbot(
-                height=600, 
-                placeholder="Ask me anything about your documents!",
-                show_label=False
+                height=720, 
+                placeholder="<strong>Ask me anything!</strong><br><em>I'll search, reason, and act to give you the best answer :)</em>",
+                show_label=False,
+                avatar_images=(None, os.path.join(ASSETS_DIR, "chatbot_avatar.png")),
+                layout="bubble"
             )
             chatbot.clear(clear_chat_handler)
             

@@ -17,7 +17,6 @@ custom_css = """
     /* ============================================
        TABS
        ============================================ */
-    /* Tab buttons - normal state */
     button[role="tab"] {
         color: #a3a3a3 !important;
         border-bottom: 2px solid transparent !important;
@@ -30,7 +29,6 @@ custom_css = """
         color: #e5e5e5 !important;
     }
     
-    /* Selected tab - white text and white underline */
     button[role="tab"][aria-selected="true"] {
         color: #ffffff !important;
         border-bottom: 2px solid #ffffff !important;
@@ -38,7 +36,6 @@ custom_css = """
         background: transparent !important;
     }
     
-    /* Remove orange underline from tab container */
     .tabs {
         border-bottom: none !important;
         border-radius: 0 !important;
@@ -49,7 +46,6 @@ custom_css = """
         border-radius: 0 !important;
     }
     
-    /* Remove any pseudo-elements that might create lines */
     button[role="tab"]::before,
     button[role="tab"]::after,
     .tabs::before,
@@ -61,7 +57,6 @@ custom_css = """
         border-radius: 0 !important;
     }
     
-    /* Center document management tab */
     #doc-management-tab {
         max-width: 500px !important;
         margin: 0 auto !important;
@@ -78,7 +73,6 @@ custom_css = """
         box-shadow: none !important;
     }
     
-    /* Primary button */
     .primary {
         background: #3b82f6 !important;
         color: white !important;
@@ -89,7 +83,6 @@ custom_css = """
         transform: translateY(-1px) !important;
     }
     
-    /* Stop/danger button */
     .stop {
         background: #ef4444 !important;
         color: white !important;
@@ -101,9 +94,8 @@ custom_css = """
     }
     
     /* ============================================
-       CHAT INPUT BOX - MODIFIED
+       CHAT INPUT BOX
        ============================================ */
-    /* Target chat input textarea - more aggressive selectors */
     textarea[placeholder="Type a message..."],
     textarea[data-testid*="textbox"]:not(#file-list-box textarea) {
         background: transparent !important;
@@ -117,7 +109,6 @@ custom_css = """
         box-shadow: none !important;
     }
     
-    /* Target the wrapper/container of chat input */
     .gr-text-input:has(textarea[placeholder="Type a message..."]),
     [class*="chatbot"] + * [data-testid="textbox"],
     form:has(textarea[placeholder="Type a message..."]) > div {
@@ -126,7 +117,6 @@ custom_css = """
         gap: 12px !important;
     }
     
-    /* Remove background from submit button in chat */
     form:has(textarea[placeholder="Type a message..."]) button,
     [class*="chatbot"] ~ * button[type="submit"] {
         background: transparent !important;
@@ -138,14 +128,13 @@ custom_css = """
         background: rgba(59, 130, 246, 0.1) !important;
     }
     
-    /* Add spacing to the form container */
     form:has(textarea[placeholder="Type a message..."]) {
         gap: 12px !important;
         display: flex !important;
     }
     
     /* ============================================
-       FILE UPLOAD - FIXED HEIGHT AND TEXT COLOR
+       FILE UPLOAD
        ============================================ */
     .file-preview, 
     [data-testid="file-upload"] {
@@ -162,13 +151,11 @@ custom_css = """
         background: #1f1f1f !important;
     }
     
-    /* Text inside file upload - white color */
     .file-preview *,
     [data-testid="file-upload"] * {
         color: #ffffff !important;
     }
     
-    /* Hide file upload label */
     .file-preview .label,
     [data-testid="file-upload"] .label {
         display: none !important;
@@ -216,19 +203,27 @@ custom_css = """
     }
     
     /* ============================================
-       CHATBOT
+       CHATBOT CONTAINER
        ============================================ */
     .chatbot {
         border-radius: 5px !important;
         background: #1a1a1a !important;
         border: none !important;
     }
-    
+
+    .chatbot .message-wrap,
+    .chatbot > div {
+        gap: 8px !important;
+        padding: 12px !important;
+    }
+
+    /* ============================================
+       MESSAGE BUBBLES
+       ============================================ */
     .message {
         border-radius: 10px !important;
-        width: fit-content !important;
     }
-    
+
     .message.user {
         background: #3b82f6 !important;
         color: white !important;
@@ -238,8 +233,18 @@ custom_css = """
         background: #1f1f1f !important;
         color: #e5e5e5 !important;
         border: 1px solid #3f3f3f !important;
+        width: fit-content !important;
+        max-width: 90% !important;
     }
     
+    .message-row img {
+        margin: 0px !important;
+    }
+
+    .avatar-container img {
+        padding: 0px !important;
+    }
+
     /* ============================================
        PROGRESS BAR
        ============================================ */

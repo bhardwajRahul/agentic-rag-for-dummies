@@ -31,7 +31,7 @@ The application will be available at `http://localhost:7860` (default Gradio por
 
 ### Prerequisites
 
-- Python 3.10+
+- Python 3.11+
 - Ollama (local) or API keys for OpenAI, Anthropic, or Google
 
 ---
@@ -477,6 +477,8 @@ export LANGFUSE_BASE_URL=https://cloud.langfuse.com   # or your self-hosted URL
 
 To disable tracing, set `LANGFUSE_ENABLED=false` or leave the variables unset. The application runs identically either way.
 
+For additional details on integrating Langfuse with LangChain or LangGraph, see the official [documentation](https://docs.langchain.com/oss/python/integrations/providers/langfuse).
+
 ### What gets traced
 
 | Component | Traced operations |
@@ -591,15 +593,6 @@ docker rm -f rag-assistant     # Remove
 > ⚠️ **Performance Note**: On Windows/Mac, Docker runs via a Linux VM which may slow down I/O operations like document indexing. LLM inference speed is largely unaffected. On Linux, performance is comparable to running locally.
 
 Once running, open `http://localhost:7860`.
-
-### Performance Optimization
-
-**Tips:**
-- Use GPU-enabled embeddings for large document sets
-- Implement caching for frequently retrieved chunks
-- Tune `top_k` retrieval parameters in tools.py
-- Consider async processing for multi-document ingestion
-- Monitor Qdrant memory usage and tune collection parameters
 
 ---
 
