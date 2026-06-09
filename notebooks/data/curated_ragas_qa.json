@@ -1,0 +1,302 @@
+[
+  {
+    "source": "javascript_tutorial.pdf",
+    "markdown_file": "javascript_tutorial.md",
+    "question": "What is JavaScript designed for, and why is it easy to implement in web pages?",
+    "reference": "JavaScript is a lightweight interpreted programming language designed for creating network-centric applications. It is easy to implement in web pages because it is integrated with HTML, and it is open and cross-platform.",
+    "context_phrases": [
+      "JavaScript is a lightweight",
+      "integrated with HTML"
+    ]
+  },
+  {
+    "source": "javascript_tutorial.pdf",
+    "markdown_file": "javascript_tutorial.md",
+    "question": "Who is the JavaScript tutorial intended for, and what prior knowledge does it assume?",
+    "reference": "The tutorial is intended for JavaScript beginners who want to understand basic functionality for building dynamic web pages and web applications. It assumes prior knowledge of HTML, some exposure to object-oriented programming concepts, and a general idea of creating online applications.",
+    "context_phrases": [
+      "Audience",
+      "prior knowledge of HTML"
+    ]
+  },
+  {
+    "source": "javascript_tutorial.pdf",
+    "markdown_file": "javascript_tutorial.md",
+    "question": "What does the JavaScript tutorial disclaimer say about accuracy and reuse of the content?",
+    "reference": "The disclaimer says the content belongs to Tutorials Point and may not be reused, retained, copied, distributed, or republished without written consent. It also says the tutorial may contain inaccuracies or errors and provides no guarantee of accuracy, timeliness, or completeness.",
+    "context_phrases": [
+      "prohibited to reuse",
+      "no guarantee regarding the accuracy"
+    ]
+  },
+  {
+    "source": "javascript_tutorial.pdf",
+    "markdown_file": "javascript_tutorial.md",
+    "question": "Which topics are included in Part 1 of the JavaScript basics section?",
+    "reference": "Part 1 includes JavaScript basics such as overview, syntax, enabling JavaScript, placement, variables, operators, if-else, switch-case, loops, loop control, functions, events, cookies, page redirect, dialog boxes, void keyword, and page printing.",
+    "context_phrases": [
+      "PART 1: JAVASCRIPT BASICS",
+      "JAVASCRIPT – Variables"
+    ]
+  },
+  {
+    "source": "javascript_tutorial.pdf",
+    "markdown_file": "javascript_tutorial.md",
+    "question": "What control-flow topics does the JavaScript tutorial list?",
+    "reference": "The tutorial lists if-else statements, switch-case, while loops, for loops, for-in loops, and loop control topics such as break, continue, and labels.",
+    "context_phrases": [
+      "JAVASCRIPT – If-Else",
+      "Loop Control"
+    ]
+  },
+  {
+    "source": "javascript_tutorial.pdf",
+    "markdown_file": "javascript_tutorial.md",
+    "question": "Which function-related topics are listed in the JavaScript tutorial?",
+    "reference": "The function section lists function definition, calling a function, function parameters, the return statement, nested functions, the Function constructor, and function literals.",
+    "context_phrases": [
+      "JAVASCRIPT – Functions",
+      "Function Literals"
+    ]
+  },
+  {
+    "source": "javascript_tutorial.pdf",
+    "markdown_file": "javascript_tutorial.md",
+    "question": "Which event and cookie topics are covered by the JavaScript tutorial?",
+    "reference": "The events section covers what an event is, onclick, onsubmit, onmouseover and onmouseout, and HTML5 standard events. The cookies section covers what cookies are, how they work, storing and reading cookies, setting expiry dates, and deleting cookies.",
+    "context_phrases": [
+      "JAVASCRIPT – Events",
+      "Deleting a Cookie"
+    ]
+  },
+  {
+    "source": "javascript_tutorial.pdf",
+    "markdown_file": "javascript_tutorial.md",
+    "question": "Which JavaScript object topics appear in Part 2 of the tutorial?",
+    "reference": "Part 2 covers JavaScript objects and related built-in object topics including Number, Boolean, Strings, Arrays, Date, Math, and RegExp.",
+    "context_phrases": [
+      "PART 2: JAVASCRIPT OBJECTS",
+      "JAVASCRIPT – Number"
+    ]
+  },
+  {
+    "source": "javascript_tutorial.pdf",
+    "markdown_file": "javascript_tutorial.md",
+    "question": "Which browser and debugging topics does the JavaScript tutorial list near the end?",
+    "reference": "Near the end, the tutorial lists debugging topics such as error messages in IE, Firefox or Mozilla, error notifications, how to debug a script, and useful developer tips. It also lists browser topics including navigator properties, navigator methods, and browser detection.",
+    "context_phrases": [
+      "JAVASCRIPT – Debugging",
+      "Browser Detection"
+    ]
+  },
+  {
+    "source": "javascript_tutorial.pdf",
+    "markdown_file": "javascript_tutorial.md",
+    "question": "What topics does the tutorial list for JavaScript placement?",
+    "reference": "The placement section lists JavaScript in the head section, JavaScript in the body section, JavaScript in both body and head sections, and JavaScript in an external file.",
+    "context_phrases": [
+      "JAVASCRIPT – Placement",
+      "JavaScript in External File"
+    ]
+  },
+  {
+    "source": "blockchain.pdf",
+    "markdown_file": "blockchain.md",
+    "question": "What is the purpose of the Blockchain for beginners guide, and what limitation does it acknowledge?",
+    "reference": "The guide is designed to give novice learners an introductory understanding of blockchain technology. It acknowledges that blockchain is rapidly evolving and that the guide is only a snapshot of the domain at the time of publication in April 2024.",
+    "context_phrases": [
+      "introductory understanding of blockchain technology",
+      "April 2024"
+    ]
+  },
+  {
+    "source": "blockchain.pdf",
+    "markdown_file": "blockchain.md",
+    "question": "Who produced the Blockchain for beginners guide?",
+    "reference": "The guide was produced by the EU Blockchain Observatory and Forum team, specifically Marianna Charalambous from the University of Nicosia and Tonia Damvakeraki from Netcompany-Intrasoft.",
+    "context_phrases": [
+      "EU Blockchain Observatory and Forum team",
+      "Marianna Charalambous"
+    ]
+  },
+  {
+    "source": "blockchain.pdf",
+    "markdown_file": "blockchain.md",
+    "question": "What does the blockchain guide's disclaimer say about responsibility and official opinion?",
+    "reference": "The disclaimer says the information and views are those of the authors and do not necessarily reflect the official opinion of the European Commission. It also says the Commission does not guarantee the accuracy of the data and is not responsible for use made of the information.",
+    "context_phrases": [
+      "official opinion of the European Commission",
+      "does not guarantee the accuracy"
+    ]
+  },
+  {
+    "source": "blockchain.pdf",
+    "markdown_file": "blockchain.md",
+    "question": "Which introductory blockchain topics are listed in the guide's table of contents?",
+    "reference": "The introductory topics include what blockchain is, historical background, why blockchain matters, and the case of Bitcoin.",
+    "context_phrases": [
+      "INTRODUCTION TO BLOCKCHAIN",
+      "THE CASE OFBITCOIN"
+    ]
+  },
+  {
+    "source": "blockchain.pdf",
+    "markdown_file": "blockchain.md",
+    "question": "Which fundamental blockchain concepts are listed in the guide?",
+    "reference": "The guide lists decentralization, cryptography, consensus mechanisms, and a comparison between blockchain and traditional databases as fundamental topics.",
+    "context_phrases": [
+      "UNDERSTANDING THE FUNDAMENTALS",
+      "CONSENSUSMECHANISMS"
+    ]
+  },
+  {
+    "source": "blockchain.pdf",
+    "markdown_file": "blockchain.md",
+    "question": "What types of blockchain does the guide say it covers?",
+    "reference": "The guide covers public versus private blockchains, permissionless versus permissioned blockchains, consortium blockchains, and hybrid blockchains.",
+    "context_phrases": [
+      "TYPES OF BLOCKCHAIN",
+      "HYBRIDBLOCKCHAINS"
+    ]
+  },
+  {
+    "source": "blockchain.pdf",
+    "markdown_file": "blockchain.md",
+    "question": "Which blockchain use cases are listed in the guide?",
+    "reference": "The listed use cases include finance and cryptocurrency, supply chain management, healthcare, voting and governance, and intellectual property.",
+    "context_phrases": [
+      "BLOCKCHAIN USE CASES",
+      "INTELLECTUALPROPERTY"
+    ]
+  },
+  {
+    "source": "blockchain.pdf",
+    "markdown_file": "blockchain.md",
+    "question": "Which emerging blockchain topics are included in the guide?",
+    "reference": "The guide includes emerging topics such as NFTs, DeFi, virtual worlds, CBDCs, interoperability, and environmental concerns and solutions.",
+    "context_phrases": [
+      "EMERGING TOPICS IN BLOCKCHAIN",
+      "ENVIRONMENTALCONCERNS"
+    ]
+  },
+  {
+    "source": "blockchain.pdf",
+    "markdown_file": "blockchain.md",
+    "question": "Which regions are listed under regulation of blockchain and cryptocurrencies?",
+    "reference": "The regulation section lists Europe, the United States of America, and Asia, with Singapore and Hong Kong called out under Asia.",
+    "context_phrases": [
+      "REGULATION OF BLOCKCHAIN AND CRYPTOCURRENCIES",
+      "SINGAPORE ANDHONGKONG"
+    ]
+  },
+  {
+    "source": "blockchain.pdf",
+    "markdown_file": "blockchain.md",
+    "question": "What additional sections follow the main blockchain guide topics?",
+    "reference": "After the main topics, the table of contents lists additional resources and references.",
+    "context_phrases": [
+      "ADDITIONAL RESOURCES",
+      "REFERENCES"
+    ]
+  },
+  {
+    "source": "fortinet.pdf",
+    "markdown_file": "fortinet.md",
+    "question": "What product and firmware does the Fortinet security target cover?",
+    "reference": "The security target covers Fortinet FortiGate Next Generation Firewalls and FortiOS 5.2 CC Compliant Firmware.",
+    "context_phrases": [
+      "Fortinet FortiGate",
+      "FortiOS 5.2 CC Compliant Firmware"
+    ]
+  },
+  {
+    "source": "fortinet.pdf",
+    "markdown_file": "fortinet.md",
+    "question": "What evaluation assurance level and document version are stated in the Fortinet security target?",
+    "reference": "The Fortinet security target states Evaluation Assurance Level EAL4+, document number 1918-002-D002, version 1.5, dated 20 September 2016.",
+    "context_phrases": [
+      "Evaluation Assurance Level",
+      "Version: 1.5"
+    ]
+  },
+  {
+    "source": "fortinet.pdf",
+    "markdown_file": "fortinet.md",
+    "question": "Who prepared the Fortinet security target?",
+    "reference": "The document says it was prepared by EWA-Canada, Ltd., located at 1223 Michael St., Suite 200, Ottawa, Ontario, Canada K1J 7T2.",
+    "context_phrases": [
+      "Prepared by",
+      "EWA - Canada"
+    ]
+  },
+  {
+    "source": "fortinet.pdf",
+    "markdown_file": "fortinet.md",
+    "question": "Which major sections are listed in the Fortinet security target contents?",
+    "reference": "The contents list major sections including Security Target Introduction, Conformance Claims, Security Problem Definition, Security Objectives, Extended Components Definition, Security Requirements, TOE Summary Specification, Terminology and Acronyms, and an annex of supported models not included in the evaluated configuration.",
+    "context_phrases": [
+      "SECURITY TARGET INTRODUCTION",
+      "TOE SUMMARY SPECIFICATION"
+    ]
+  },
+  {
+    "source": "fortinet.pdf",
+    "markdown_file": "fortinet.md",
+    "question": "What TOE overview and TOE description topics are listed in the Fortinet contents?",
+    "reference": "The TOE overview includes TOE features, and the TOE description includes physical scope and logical scope.",
+    "context_phrases": [
+      "TOE OVERVIEW",
+      "Logical Scope"
+    ]
+  },
+  {
+    "source": "fortinet.pdf",
+    "markdown_file": "fortinet.md",
+    "question": "Which TOE security functions are listed in the summary specification area?",
+    "reference": "The TOE summary specification lists security functions including security audit, cryptographic support, user data protection, identification and authentication, security management, protection of the TSF, trusted path/channel, intrusion prevention, and anti-virus actions.",
+    "context_phrases": [
+      "7.1.4 Identification and Authentication",
+      "7.1.9 Anti-Virus Actions"
+    ]
+  },
+  {
+    "source": "fortinet.pdf",
+    "markdown_file": "fortinet.md",
+    "question": "How does the TOE handle identification and authentication for administrative and network access?",
+    "reference": "The TOE requires identification and authentication for all administrative access and for network user access to specific services. Local administrators use a username and password, remote administration and Telnet/FTP user access require FortiToken one-time password authentication, and VPN peers authenticate with pre-shared keys or certificates.",
+    "context_phrases": [
+      "requires identification and authentication",
+      "FortiToken"
+    ]
+  },
+  {
+    "source": "fortinet.pdf",
+    "markdown_file": "fortinet.md",
+    "question": "What security management capabilities does the TOE provide to authorized administrators?",
+    "reference": "Authorized administrators may read audit log data, acknowledge alarms, and manage users, IPS policies, and information flow policies. The TOE provides a web-based GUI and CLI for managing security functions, with access controlled by administrator profiles.",
+    "context_phrases": [
+      "Security Management",
+      "web-based GUI and a CLI"
+    ]
+  },
+  {
+    "source": "fortinet.pdf",
+    "markdown_file": "fortinet.md",
+    "question": "What trusted path and trusted channel mechanisms are described for the TOE?",
+    "reference": "The TOE provides trusted paths and channels protected by encryption and cryptographic signature. The Network Web-Based GUI uses HTTPS with TLS 1.1 and TLS 1.2, and HA heartbeat encryption and authentication can protect cluster communication.",
+    "context_phrases": [
+      "trusted paths and trusted channels",
+      "TLS 1.1"
+    ]
+  },
+  {
+    "source": "fortinet.pdf",
+    "markdown_file": "fortinet.md",
+    "question": "How does the TOE process incoming information flows before forwarding packets?",
+    "reference": "Incoming information is first inspected for IPS anomalies targeting the TOE. If not blocked, it is processed against firewall policy rules and authentication requirements; allowed flows may then be subject to Protection Profile restrictions before packet data is forwarded according to the egress interface or static route.",
+    "context_phrases": [
+      "first processing step",
+      "After all security policy enforcement"
+    ]
+  }
+]
